@@ -8,7 +8,22 @@
 # include "mlx/mlx.h"
 # include "Libft/libft.h"
 # include "./gnl/get_next_line.h"
-# define P_0 "xpm/man.xpm"
+# define I_0 "image/deneme.xpm"
+# define I_P "image/man.xpm"
+# define I_C "image/sarı.xpm"
+# define I_W "image/siyah.xpm"
+
+
+typedef	struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img1;
+	void	*img2;
+	int		*w_len;
+	int		*w_hei;
+}t_mlx;
+
 
 typedef struct s_location{
 	int	x;
@@ -18,10 +33,11 @@ typedef struct s_location{
 
 
 typedef struct	s_data{
-	t_location *p_location;
-	char	**dMap;
-	char	**dMapCp;
-	char	*lineMap;
+	t_location	*p_location;
+	t_mlx		*d_mlx;
+	char		**dMap;
+	char		**dMapCp;
+	char		*lineMap;
 	int	lenght;
 	int	height;
 	int	player;	

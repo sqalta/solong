@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/11 14:05:14 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/12 18:50:33 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	data_map(t_data *data)
 
 	i = 0;
 	k = 0;
-	while (data->dMap[i])
+	while (data->d_map[i])
 		i++;
 	data->height = i;
-	while (data->dMap[0][k])
+	while (data->d_map[0][k])
 		k++;
 	data->lenght = k;
 }
@@ -62,8 +62,8 @@ void	cntrl_components(t_data *data, int i)
 			print_exit();
 		}
 		//haritayı eski haline döndürme.
-		free(data->dMap);
-		data->dMap = ft_split(data->lineMap, '\n');
+		free(data->d_map);
+		data->d_map = ft_split(data->lineMap, '\n');
 	}
 }
 
@@ -90,15 +90,16 @@ void	r_map(char *pathMap, t_data *data)
 		*(buff + rd) = '\0';
 		data->lineMap = ft_strjoin_gnl(data->lineMap, buff);
 	}
-	data->dMap = ft_split(data->lineMap, '\n');
+	data->d_map = ft_split(data->lineMap, '\n');
 	free(buff);
 }
 
 void	get_map(char *pathMap, t_data *data)
 {
+	data->d_player = ft_calloc(sizeof(t_cmp), 1);
 	r_map(pathMap, data);
 	cntrl_map(data);
 	cntrl_components(data, 1); // 1->başlangıç kontrolleri
-	valid_path(data, data->p_location->y, data->p_location->x);
+	valid_path(data, data->d_player->y, data->d_player->x);
 	cntrl_components(data, 0); // 2->valid kontrolleri
 }

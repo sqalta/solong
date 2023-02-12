@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -g
 MLX = ./mlx/libmlx.a
 LIBFT = Libft/libft.a
 GNL_SRCS = ./gnl/get_next_line.c  ./gnl/get_next_line_utils.c
-SRC = so_long.c ./map/*.c
+SRC = so_long.c ./map/*.c p_move.c
 CC = gcc
 
 all: $(MLX) $(NAME)

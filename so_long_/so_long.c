@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:58:11 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/12 20:17:47 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/13 19:59:00 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,15 @@ void	create_window(t_data *data)
 	data->d_mlx->mlx = mlx_init();
 	data->d_mlx->win = mlx_new_window(data->d_mlx->mlx, data->d_mlx->w_len, data->d_mlx->w_hei, "First Try");
 	data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_P, &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	data->d_mlx->e_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_E,  &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	data->d_mlx->w_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_W,  &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	data->d_mlx->o_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_0,  &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	data->d_mlx->c_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_C,  &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	data->d_mlx->k_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_K,  &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->e_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_E, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->w_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_W, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->o_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_0, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_C, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->k_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_K, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	put_background(data);
 	mlx_hook(data->d_mlx->win, 2, 1L<<0, k_down, data);
 	mlx_loop(data->d_mlx->mlx);
 }
-
 
 int main(int ac, char **av)
 {

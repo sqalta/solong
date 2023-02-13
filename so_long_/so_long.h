@@ -14,6 +14,7 @@
 # define I_W "image/siyah.xpm"
 # define I_E "image/exit.xpm"
 # define I_K "image/kirmizi.xpm"
+
 # define IMG_L 64 //size image
 # define IMG_H 64 //size image
 # define W 13
@@ -32,6 +33,7 @@ typedef	struct s_mlx
 	void	*o_img;
 	void	*e_img;
 	void	*k_img;
+
 	int		img_len;
 	int		img_hei;
 	int		w_len;
@@ -75,7 +77,8 @@ void 	size_map(t_data *data);
 void	put_components(t_data *data, char s, int x, int y);
 void	put_background(t_data *data);
 void	create_window(t_data *data);
-int	cntrl_free(char	s);
-int k_down(int keycode, t_data *data);
+int		cntrl_free(int x, int y, t_data *data);
+int 	k_down(int keycode, t_data *data);
+void 	put_animation(int c, int flag, t_data *data);
 void 	print_exit();
 #endif

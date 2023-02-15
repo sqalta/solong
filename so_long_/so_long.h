@@ -8,6 +8,7 @@
 # include "mlx/mlx.h"
 # include "Libft/libft.h"
 # include "./gnl/get_next_line.h"
+# include "./printf/ft_printf.h"
 # define I_0 "image/beyaz.xpm"
 # define I_P "image/player.xpm"
 # define I_C "image/sarı.xpm"
@@ -55,6 +56,8 @@ typedef	struct s_mlx
 typedef struct s_components{
 	int	x;
 	int	y;
+	int	x_loc;
+	int	y_loc;
 	int	len;
 	int hei;
 }t_cmp;
@@ -64,6 +67,10 @@ typedef struct	s_data{
 	t_cmp		*d_player;
 	char		**d_map;
 	char		*lineMap;
+	int z;
+	int	m_right;
+	int m_up;
+	int ind;
 	int	lenght;
 	int	height;
 	int	player;	
@@ -91,5 +98,6 @@ void	create_window(t_data *data);
 int		cntrl_free(int x, int y, t_data *data);
 int 	k_down(int keycode, t_data *data);
 void 	put_animation(int c, int flag, t_data *data);
+int		move_x(t_data *data);
 void 	print_exit();
 #endif

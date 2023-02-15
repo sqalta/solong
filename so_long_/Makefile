@@ -3,6 +3,7 @@ SFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
 CFLAGS = -Wall -Wextra -g
 MLX = ./mlx/libmlx.a
 LIBFT = Libft/libft.a
+PRINTF_SRCS = ./printf/*.c
 GNL_SRCS = ./gnl/get_next_line.c  ./gnl/get_next_line_utils.c
 SRC = so_long.c ./map/*.c p_move.c
 CC = gcc
@@ -10,13 +11,16 @@ CC = gcc
 all: $(MLX) $(NAME)
 
 $(NAME): $(SRC) $(MLX) $(LIBFT)
-	$(CC) $(CFLAGS) $(SFLAGS) $(SRC) $(LIBFT) $(MLX) $(GNL_SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SFLAGS) $(SRC) $(LIBFT) $(MLX) $(GNL_SRCS) $(PRINTF_SRCS) -o $(NAME)
 
 $(MLX):
 	make -C ./mlx
 
 $(LIBFT):
 	make -C ./Libft
+
+$(PRINTF_SRCS):
+	make -C ./printf
 
 clean:
 

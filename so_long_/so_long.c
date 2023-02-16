@@ -6,17 +6,11 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:58:11 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/15 19:00:23 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:53:42 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void print_exit()
-{
-	printf("%s", "exit");
-	exit(0);
-}
 
 void size_map(t_data *data)
 {
@@ -81,10 +75,9 @@ void	create_window(t_data *data)
 	data->d_mlx->d_frm[5] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF6, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->d_frm[6] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF7, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->d_frm[7] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF8, &data->d_mlx->img_len, &data->d_mlx->img_hei);
-	
 	put_background(data);
 	mlx_hook(data->d_mlx->win, 2, 1L<<0, k_down, data);
-	mlx_loop_hook(data->d_mlx->mlx, &move_x, data);
+	mlx_loop_hook(data->d_mlx->mlx, move, data);
 	mlx_loop(data->d_mlx->mlx);
 }
 

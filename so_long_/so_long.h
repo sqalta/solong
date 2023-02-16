@@ -34,6 +34,12 @@
 # define S 1
 # define ESC 53
 
+typedef struct s_loc{
+	int x;
+	int y;
+	int flag;
+}t_loc;
+
 typedef	struct s_mlx
 {
 	void	*mlx;
@@ -67,10 +73,9 @@ typedef struct	s_data{
 	t_cmp		*d_player;
 	char		**d_map;
 	char		*lineMap;
-	int z;
-	int	m_right;
-	int m_up;
-	int ind;
+	t_loc	*enemy_loc;
+	t_loc	*col_loc;
+	int	flag_c;
 	int	lenght;
 	int	height;
 	int	player;	
@@ -99,5 +104,6 @@ int		cntrl_free(int x, int y, t_data *data);
 int 	k_down(int keycode, t_data *data);
 void 	put_animation(int c, int flag, t_data *data);
 int		move_x(t_data *data);
+int 	move(t_data *data);
 void 	print_exit();
 #endif

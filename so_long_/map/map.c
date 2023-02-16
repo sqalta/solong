@@ -6,11 +6,17 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/14 18:29:19 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/16 19:37:25 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void print_exit()
+{
+	printf("%s", "exit");
+	exit(0);
+}
 
 void	data_map(t_data *data)
 {
@@ -50,6 +56,39 @@ void	cntrl_map(t_data *data)
 		i++;
 	}
 }
+void find_c(t_data *data, char s, int nbr) //collectible ve enemy için ayn fonksiyon, extra char s alsın. s = 'E' GİBİSİNDEN.
+{
+	t_loc *loc;
+	int	i;
+	int y;
+	int x;
+
+	loc = malloc(sizeof(t_loc) * nbr);
+	i = 0;
+	y = 0;
+	x = 0;
+	while (y < data->height)
+	{
+		x = 0;
+		while (data->d_map[y][x])
+		{
+			if (data->d_map[y][x] == s)
+			{
+				loc[i].flag = 1; //animasyon flag;
+				loc[i].x = y;
+				loc[i].y = x;
+				i++;
+			}
+			x++;
+		}
+		y++;
+	}
+	if (s == 'C')
+		data->col_loc = loc;
+	else
+		data->enemy_loc = loc;
+	
+}
 
 void	cntrl_components(t_data *data, int i)
 {
@@ -72,6 +111,8 @@ void	cntrl_components(t_data *data, int i)
 		//haritayı eski haline döndürme.
 		free(data->d_map);
 		data->d_map = ft_split(data->lineMap, '\n');
+		find_c(data, 'C', data->collectible);
+		find_c(data, 'K', data->enemy);
 	}
 }
 

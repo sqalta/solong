@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:24:36 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/15 19:01:37 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/16 20:04:14 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 int	cntrl_free(int x, int y, t_data *data) //gidilebilir mi
 {
+	int i = 0;
 	if (data->d_map[x][y] == '1')
 		return (0);
 	else if (data->d_map[x][y] == 'C')
 	{
+		while (i < data->collectible)
+		{
+			if ((data->col_loc[i].x == x) && (data->col_loc[i].y == y))
+			{
+				data->col_loc[i].flag = 0;
+			}
+			i++;
+		}
 		data->collectible -= 1;
 		return (1);
 	}
@@ -52,84 +61,55 @@ void put_animation(int c, int flag, t_data *data)
 
 int k_down(int keycode, t_data *data)
 {
-	data->ind = 0;
 	if (keycode == W) //alttaki if koşulu üste alınacak. Line sayısı için
 	{
 		if (cntrl_free(data->d_player->y - 1, data->d_player->x, data))
 		{
-			
+			put_animation(-1, 1, data);
 		}
 	}
 	else if (keycode == S)
 	{
 		if (cntrl_free(data->d_player->y + 1, data->d_player->x, data))
 		{
-			
+			put_animation(1, 1, data);
 		}
 	}
 	else if (keycode == A)
 	{
 		if (cntrl_free(data->d_player->y, data->d_player->x - 1, data))
 		{
-			data->ind = 8;
-			data->m_right = -1;
+			put_animation(-1, 0, data);
 		}
 	}
 	else if (keycode == D)
 	{
 		if (cntrl_free(data->d_player->y, data->d_player->x + 1, data))
 		{
-			data->ind = 8;
-			data->m_right = 1;
+			put_animation(1, 0, data);
 		}
 	}
 	return (0);
 }
 
-int	move_x(t_data *data)
+int move(t_data *data)
 {
-	static int loc;
 	static int z;
+	static int j;
+	static int k = 0;
 
-	if (data->ind <= 8 && data->ind > 0)
+	if (j < data->collectible)
 	{
-		data->d_player->x_loc = (data->d_player->x * 64) + loc;
-		mlx_put_image_to_window(data->d_mlx->mlx, data->d_mlx->win, data->d_mlx->o_img, data->d_player->x_loc, data->d_player->y * IMG_H);
-		ft_printf ("loc->%d\n", loc);
-		ft_printf ("xloc->%d", data->d_player->x_loc);
-		mlx_put_image_to_window(data->d_mlx->mlx, data->d_mlx->win, data->d_mlx->d_frm[8 - data->ind], data->d_player->x_loc, data->d_player->y * IMG_H);
-		loc = (IMG_L / 8) * (9 - data->ind) * data->m_right;
+		if (data->col_loc[j].flag)
+			mlx_put_image_to_window(data->d_mlx->mlx, data->d_mlx->win, data->d_mlx->d_frm[z], data->col_loc[j].y * IMG_L, data->col_loc[j].x * IMG_H);
+		k++;
+	}
+	if (k == data->col_loc)
+	{
 		z++;
-		data->ind--;
-		usleep(50000);
+		j++;
+		k = 1;
 	}
-	if (data->ind == 0)
-	{
-		data->d_player->x += data->m_right;
-		ft_printf("-->d_x%d\n", data->d_player->x);
-		ft_printf("-->m_rig%d", data->m_right);
-		data->ind = 22;
-		data->m_right = 0;
-		loc = 0;
-	}
+	if (z == 8)
+		z = 0;
 }
-
-
-/*int k_down(int keycode, t_data *data)
-{
-	if (keycode == A)
-	{
-		if (cntrl_free(data->d_player->y, data->d_player->x + 1, data))
-		{
-			move_x(-1, data);
-		}
-	}
-	if (keycode == D)
-	{
-		if (cntrl_free(data->d_player->y, data->d_player->x + 1, data))
-		{
-			move_x(1, data);
-		}
-	}
-	return (0);
-}*/

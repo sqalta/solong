@@ -1,0 +1,2 @@
+Çarpıya basınca pencere kapatılacak !;
+Map içinde geçersiz harf varsa kontrol ediyor ancak nerede kontrol ediyor bul !;

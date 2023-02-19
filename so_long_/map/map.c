@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/19 19:14:34 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 22:09:33 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void find_c(t_data *data, char s, int nbr) //collectible ve enemy için ayn fonk
 	loc = malloc(sizeof(t_loc) * nbr);
 	i = 0;
 	y = 0;
-	x = 0;
 	while (y < data->height)
 	{
 		x = 0;
@@ -85,7 +84,7 @@ void find_c(t_data *data, char s, int nbr) //collectible ve enemy için ayn fonk
 	}
 	if (s == 'C')
 		data->col_loc = loc;
-	else
+	else if (s == 'K')
 		data->enemy_loc = loc;
 	
 }
@@ -114,6 +113,7 @@ void	cntrl_components(t_data *data, int i)
 		find_c(data, 'C', data->collectible);
 		data->cpy_collectible = data->collectible;  //exit noktasında collectible sayısını kontrol etmek için gerekli !;
 		find_c(data, 'K', data->enemy);
+		ft_printf("%d", data->enemy);
 	}
 }
 
@@ -145,9 +145,22 @@ void	r_map(char *pathMap, t_data *data)
 	data->d_map = ft_split(data->lineMap, '\n');
 	free(buff);
 }
+void	cntrl_extansion(char *s)
+{
+	char	*tmp;
+	int	i;
+	
+	if (!*s)
+		print_exit();
+	i = 0;
+	tmp = ft_strchr(s, '.');
+	if (!(*(tmp + 1) == 'b' && *(tmp + 2) == 'e' && *(tmp + 3) == 'r'))
+		print_exit();
+}
 
 void	get_map(char *pathMap, t_data *data)
 {
+	cntrl_extansion(pathMap);
 	data->d_player = ft_calloc(sizeof(t_cmp), 1);
 	r_map(pathMap, data);
 	cntrl_map(data);

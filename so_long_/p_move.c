@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:24:36 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/19 19:34:10 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 22:14:36 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,34 +59,23 @@ void put_animation(int c, int flag, t_data *data)
 
 int k_down(int keycode, t_data *data)
 {
+	static	int i;
+	if (keycode == ESC)
+		print_exit();
 	if (keycode == W) //alttaki if koşulu üste alınacak. Line sayısı için
-	{
 		if (cntrl_free(data->d_player->y - 1, data->d_player->x, data))
-		{
 			put_animation(-1, 1, data);
-		}
-	}
-	else if (keycode == S)
-	{
+	if (keycode == S)
 		if (cntrl_free(data->d_player->y + 1, data->d_player->x, data))
-		{
 			put_animation(1, 1, data);
-		}
-	}
-	else if (keycode == A)
-	{
+	if (keycode == A)
 		if (cntrl_free(data->d_player->y, data->d_player->x - 1, data))
-		{
 			put_animation(-1, 0, data);
-		}
-	}
-	else if (keycode == D)
-	{
+	if (keycode == D)
 		if (cntrl_free(data->d_player->y, data->d_player->x + 1, data))
-		{
 			put_animation(1, 0, data);
-		}
-	}
+	i++;
+	ft_printf("%s%d\n","Step->", i);
 	return (0);
 }
 
@@ -104,7 +93,7 @@ void collectible_move(t_data *data)
 	}
 	if (k == data->cpy_collectible)
 	{
-		usleep(50000);
+		usleep(30000);
 		j = 0;
 		k = 0;
 		z++;
@@ -117,7 +106,7 @@ int enemy_move(t_data *data)
 {
 	static int i;
 	static int loc;
-	usleep(100000);
+	usleep(70000);
 	if (i <= 3)
 	{
 		mlx_put_image_to_window(data->d_mlx->mlx, data->d_mlx->win, data->d_mlx->o_img, data->enemy_loc[0].x * IMG_L + loc, data->enemy_loc[0].y * IMG_H);
@@ -151,7 +140,8 @@ int move(t_data *data)
 {
 	if (data->collectible)
 		collectible_move(data);
-	enemy_move(data);
+	if (data->enemy)
+		enemy_move(data);
 	if (data->d_player->y == data->enemy_loc[0].y && data->d_player->x == data->enemy_loc[0].x) // enemy player kontrolü
 		exit (0);
 }

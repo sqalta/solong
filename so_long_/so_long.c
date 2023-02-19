@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:58:11 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/19 14:40:35 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 17:47:16 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ void	create_window(t_data *data)
 	data->d_mlx->d_frm[5] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF6, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->d_frm[6] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF7, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->d_frm[7] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_DF8, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->e_frm[0] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF1, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->e_frm[1] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF2, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->e_frm[2] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF1, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->e_frm[3] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF4, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	put_background(data);
 	mlx_hook(data->d_mlx->win, 2, 1L<<0, k_down, data);
 	mlx_loop_hook(data->d_mlx->mlx, move, data);

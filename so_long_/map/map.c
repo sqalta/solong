@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/19 15:02:53 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 19:14:34 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void find_c(t_data *data, char s, int nbr) //collectible ve enemy için ayn fonk
 			if (data->d_map[y][x] == s)
 			{
 				loc[i].flag = 1; //animasyon flag;
-				loc[i].x = y;
-				loc[i].y = x;
+				loc[i].x = x; //
+				loc[i].y = y; //
 				i++;
 			}
 			x++;

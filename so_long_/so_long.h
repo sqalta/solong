@@ -23,7 +23,10 @@
 # define I_DF6 "image/frame6.xpm"
 # define I_DF7 "image/frame7.xpm"
 # define I_DF8 "image/frame8.xpm"
-
+# define I_EF1 "image/e_frame1.xpm"
+# define I_EF2 "image/e_frame2.xpm"
+# define I_EF3 "image/e_frame3.xpm"
+# define I_EF4 "image/e_frame4.xpm"
 
 
 # define IMG_L 64 //size image
@@ -51,6 +54,7 @@ typedef	struct s_mlx
 	void	*e_img;
 	void	*k_img;
 	void	*d_frm[8];
+	void	*e_frm[4];
 
 	int		img_len;
 	int		img_hei;

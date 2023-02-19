@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:24:36 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/16 20:04:14 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 15:04:07 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	cntrl_free(int x, int y, t_data *data) //gidilebilir mi
 		return (0);
 	else if (data->d_map[x][y] == 'C')
 	{
-		while (i < data->collectible)
+		while (i < data->cpy_collectible)
 		{
-			if ((data->col_loc[i].x == x) && (data->col_loc[i].y == y))
+			if ((data->col_loc[i].x == x) && (data->col_loc[i].y == y)) //Collectible sayısını azaltacaksın başka bir değişkenle.
 			{
 				data->col_loc[i].flag = 0;
+				data->collectible -= 1;
 			}
 			i++;
 		}
-		data->collectible -= 1;
 		return (1);
 	}
 	return (1);
@@ -96,20 +96,23 @@ int move(t_data *data)
 {
 	static int z;
 	static int j;
-	static int k = 0;
+	static int k;
 
-	if (j < data->collectible)
+	
+	if (j < data->cpy_collectible)
 	{
 		if (data->col_loc[j].flag)
 			mlx_put_image_to_window(data->d_mlx->mlx, data->d_mlx->win, data->d_mlx->d_frm[z], data->col_loc[j].y * IMG_L, data->col_loc[j].x * IMG_H);
 		k++;
-	}
-	if (k == data->col_loc)
-	{
-		z++;
 		j++;
-		k = 1;
 	}
-	if (z == 8)
+	if (k == data->cpy_collectible)
+	{
+		usleep(50000);
+		j = 0;
+		k = 0;
+		z++;
+	}
+	if (z == 7)
 		z = 0;
 }

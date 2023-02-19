@@ -80,6 +80,7 @@ typedef struct	s_data{
 	int	height;
 	int	player;	
 	int	collectible;
+	int cpy_collectible;
 	int	exit;
 	int empty;
 	int enemy;

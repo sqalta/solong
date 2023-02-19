@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:58:11 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/16 17:53:42 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 14:40:35 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	create_window(t_data *data)
 {
 	size_map(data);
 	data->d_mlx->mlx = mlx_init();
-	data->d_mlx->win = mlx_new_window(data->d_mlx->mlx, data->d_mlx->w_len, data->d_mlx->w_hei, "First Try");
+	data->d_mlx->win = mlx_new_window(data->d_mlx->mlx, data->d_mlx->w_len, data->d_mlx->w_hei, "yamyam");
 	data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_P, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->e_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_E, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->w_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_W, &data->d_mlx->img_len, &data->d_mlx->img_hei);

@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/16 19:37:25 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/19 15:02:53 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	cntrl_components(t_data *data, int i)
 		free(data->d_map);
 		data->d_map = ft_split(data->lineMap, '\n');
 		find_c(data, 'C', data->collectible);
+		data->cpy_collectible = data->collectible;  //exit noktasında collectible sayısını kontrol etmek için gerekli !;
 		find_c(data, 'K', data->enemy);
 	}
 }

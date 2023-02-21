@@ -1,0 +1,4 @@
+Çarpıya basınca pencere kapatılacak !;
+//Map içinde geçersiz harf varsa kontrol ediyor ancak nerede kontrol ediyor bul !;
+printf clone'dan çekilince gözükmüyor.!;
+adım sayısı duvara basınca hatalı artıyor. Adım sayısını animasyon basılınca arttır.

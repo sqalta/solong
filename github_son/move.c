@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:24:36 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/21 21:29:08 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/22 21:43:01 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ void collectible_move(t_data *d)
 	if (j < d->cpy_collectible)
 	{
 		if (d->c_loc[j].flag)
-			mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx
-				->d_frm[z], d->c_loc[j].x * L, d->c_loc[j].y * H);
+		{
+			mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx->o_img, d->c_loc[j].x * L, d->c_loc[j].y * H);
+			mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx->c_frm[z], d->c_loc[j].x * L, d->c_loc[j].y * H);
+		}
 		k++;
 		j++;
 	}
 	if (k == d->cpy_collectible)
 	{
-		usleep(30000);
 		j = 0;
 		k = 0;
 		z++;
@@ -48,9 +49,9 @@ int	enemy_move2(t_data *d, int loc, int i)
 
 void enemy_move(t_data *d)
 {
+	usleep(50000);
 	static int i;
 	static int loc;
-	usleep(70000);
 	if (i <= 3)
 	{
 		mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx->o_img, 
@@ -77,10 +78,10 @@ void enemy_move(t_data *d)
 
 int move(t_data *d)
 {
-	if (d->collectible)
-		collectible_move(d);
 	if (d->enemy)
 		enemy_move(d);
+	if (d->collectible)
+		collectible_move(d);
 	if (d->d_p.y == d->e_loc[0].y && d->d_p.x == d->e_loc[0].x)
 		print_exit(4);
 	return(0);

@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/21 19:38:38 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/22 17:33:54 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,11 @@ void	cntrl_components(t_data *data, int i)
 	{
 		if (!val_map_cntrl(data))
 			print_exit(2);
-		free(data->d_map);
+		int i = -1;
+		while (data->d_map[++i])
+			free(data->d_map[i]);
 		data->d_map = ft_split(data->lineMap, '\n');
+		free(data->lineMap); //leaks ,!!!
 		data->c_loc = find_c(data, 'C', data->collectible);
 		data->cpy_collectible = data->collectible;
 		data->e_loc = find_c(data, 'K', data->enemy);

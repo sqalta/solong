@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   load_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:10:48 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/21 20:14:54 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/22 19:46:24 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,16 @@ void	load_frame(t_data *data)
 		I_EF1, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->e_frm[3] = mlx_xpm_file_to_image(data->d_mlx->mlx, 
 		I_EF4, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+}
+void	load_frame2(t_data *data)
+{
+	data->d_mlx->c_frm[0] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF1, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[1] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF2, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[2] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF3, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[3] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF4, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[4] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF5, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[5] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF6, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[6] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF7, &data->d_mlx->img_len, &data->d_mlx->img_hei);
+	data->d_mlx->c_frm[7] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF8, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 }
 

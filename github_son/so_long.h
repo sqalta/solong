@@ -23,10 +23,15 @@
 # define I_DF6 "image/frame6.xpm"
 # define I_DF7 "image/frame7.xpm"
 # define I_DF8 "image/frame8.xpm"
-# define I_EF1 "image/e_frame1.xpm"
-# define I_EF2 "image/e_frame2.xpm"
-# define I_EF3 "image/e_frame3.xpm"
-# define I_EF4 "image/e_frame4.xpm"
+# define I_EF1 "image/c_frame1.xpm"
+# define I_EF2 "image/c_frame2.xpm"
+# define I_EF3 "image/c_frame3.xpm"
+# define I_EF4 "image/c_frame4.xpm"
+# define I_EF5 "image/c_frame5.xpm"
+# define I_EF6 "image/c_frame6.xpm"
+# define I_EF7 "image/c_frame7.xpm"
+# define I_EF8 "image/c_frame8.xpm"
+
 
 
 # define L 64 //size image
@@ -55,6 +60,7 @@ typedef	struct s_mlx
 	void	*k_img;
 	void	*d_frm[8];
 	void	*e_frm[4];
+	void	*c_frm[8];
 
 	int		img_len;
 	int		img_hei;
@@ -110,12 +116,14 @@ int 	k_down(int keycode, t_data *data);
 void 	put_animation(int c, int flag, t_data *data);
 int		move_x(t_data *data);
 int 	move(t_data *data);
+void 	enemy_move(t_data *d);
 void	print_exit(int i);
 void	cntrl_extansion(char *s);
 t_loc	*find_c(t_data *data, char s, int nbr);
 int		val_map_cntrl(t_data *data);
 void	load_image(t_data *data);
 void	load_frame(t_data *data);
+void	load_frame2(t_data *data);
 int		cntrl_free(int x, int y, t_data *d);
 void	put_player2(int c, t_data *d);
 void	put_player1(int c, int flag, t_data *d);

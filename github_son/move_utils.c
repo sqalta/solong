@@ -6,29 +6,11 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:27:43 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 19:08:05 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:16:11 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	put_string(t_data *d, int i)
-{
-	int		color;
-	char	*s;
-	char	*k;
-
-	color = 0x00FFFFFF;
-	s = ft_strdup("Step->");
-	k = ft_itoa(i);
-	s = ft_strjoin(s, k);
-	ft_printf("%s\n", s);
-	mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win,
-		d->d_mlx->w_img, 0, 0);
-	mlx_string_put(d->d_mlx->mlx, d->d_mlx->win,
-		0, 64, color, s);
-	free(s);
-}
 
 int	cntrl_free(int x, int y, t_data *d)
 {

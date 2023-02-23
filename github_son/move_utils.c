@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:27:43 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 16:06:43 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 16:55:36 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 void	put_string(t_data *d, int i)
 {
-	int color = 0x00FFFFFF;
+	int		color;
 	char	*s;
 	char	*k;
-	
+
+	color = 0x00FFFFFF;
 	s = ft_strdup("Step->");
 	k = ft_itoa(i);
 	s = ft_strjoin(s, k);
 	ft_printf("%s\n", s);
-	mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx->w_img, 0, 0);
-	mlx_string_put(d->d_mlx->mlx, d->d_mlx->win, 0, 64, color, s);
+	mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win,
+		d->d_mlx->w_img, 0, 0);
+	mlx_string_put(d->d_mlx->mlx, d->d_mlx->win,
+		0, 64, color, s);
 	free(s);
 }
+
 int	cntrl_free(int x, int y, t_data *d)
 {
 	int	i;
@@ -57,13 +61,14 @@ void	put_player2(int c, t_data *d)
 		->o_img, (d->d_p.x) * L, (d->d_p.y) * H);
 	if (d->d_map[d->d_p.y][d->d_p.x] == 'E')
 		mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx
-			->e_img, (d->d_p.x) * L, (d->d_p.y) * H);	
-	d->d_p.x += c;	
+			->e_img, (d->d_p.x) * L, (d->d_p.y) * H);
+	d->d_p.x += c;
 }
 
 void	put_player1(int c, int flag, t_data *d)
 {
-	static	int i;
+	static int	i;
+
 	if (flag == 1)
 	{
 		mlx_put_image_to_window(d->d_mlx->mlx, d->d_mlx->win, d->d_mlx
@@ -83,38 +88,48 @@ void	put_player1(int c, int flag, t_data *d)
 		d->d_map[d->d_p.y][d->d_p.x] = '0';
 	put_string(d, ++i);
 }
+
 int	k_down2(int keycode, t_data *d)
 {
 	if (keycode == A)
+	{
 		if (cntrl_free(d->d_p.y, d->d_p.x - 1, d))
 		{
 			load_p_image(3, d);
 			put_player1(-1, 0, d);
 		}
+	}
 	if (keycode == D)
+	{
 		if (cntrl_free(d->d_p.y, d->d_p.x + 1, d))
 		{
 			load_p_image(4, d);
 			put_player1(1, 0, d);
 		}
+	}
 	return (0);
 }
-int k_down(int keycode, t_data *d)
+
+int	k_down(int keycode, t_data *d)
 {
 	if (keycode == ESC)
 		print_exit(2);
 	if (keycode == W)
+	{
 		if (cntrl_free(d->d_p.y - 1, d->d_p.x, d))
 		{
-			load_p_image(1, d);			
+			load_p_image(1, d);
 			put_player1(-1, 1, d);
 		}
+	}
 	if (keycode == S)
+	{
 		if (cntrl_free(d->d_p.y + 1, d->d_p.x, d))
 		{
 			load_p_image(2, d);
 			put_player1(1, 1, d);
 		}
+	}
 	if (keycode == A || keycode == D)
 		k_down2(keycode, d);
 	return (0);

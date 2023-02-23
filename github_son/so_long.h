@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 17:40:29 by spalta            #+#    #+#             */
+/*   Updated: 2023/02/23 17:41:49 by spalta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -35,10 +45,6 @@
 # define I_PL "image/left_p.xpm"
 # define I_PB "image/back_p.xpm"
 # define I_PF "image/front_p.xpm"
-
-
-
-
 # define L 64 //size image
 # define H 64 //size image
 # define W 13
@@ -48,12 +54,12 @@
 # define ESC 53
 
 typedef struct s_loc{
-	int x;
-	int y;
-	int flag;
+	int	x;
+	int	y;
+	int	flag;
 }t_loc;
 
-typedef	struct s_mlx
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
@@ -73,35 +79,34 @@ typedef	struct s_mlx
 	int		w_hei;
 }t_mlx;
 
-
-typedef struct s_components{
+typedef struct s_components
+{
 	int	x;
 	int	y;
 	int	x_loc;
 	int	y_loc;
 	int	len;
-	int hei;
+	int	hei;
 }t_cmp;
 
-typedef struct	s_data{
-	t_mlx		*d_mlx;
-	t_cmp		d_p;
-	char		**d_map;
-	char		*lineMap;
-	t_loc	*e_loc;
+typedef struct s_data{
+	t_mlx	*d_mlx;
+	t_cmp	d_p;
 	t_loc	*c_loc;
-	int	flag_c;
-	int	lenght;
-	int	height;
-	int	player;	
-	int	collectible;
-	int cpy_collectible;
-	int	exit;
-	int empty;
-	int enemy;
-	int	wall;
+	t_loc	*e_loc;
+	char	**d_map;
+	char	*line_map;
+	int		flag_c;
+	int		lenght;
+	int		height;
+	int		player;	
+	int		collectible;
+	int		cpy_collectible;
+	int		exit;
+	int		empty;
+	int		enemy;
+	int		wall;
 }				t_data;
-
 
 void	get_map(char *pathMap, t_data *data);
 void	r_map(char *pathMap, t_data *data);
@@ -112,16 +117,16 @@ void	middle_line(t_data *data, int i);
 void	cntrl_components(t_data *data, int i);
 void	valid_path(t_data *data, int i, int j);
 int		val_map_cntrl(t_data *data);
-void 	size_map(t_data *data);
+void	size_map(t_data *data);
 void	put_components(t_data *data, char s, int x, int y);
 void	put_background(t_data *data);
 void	create_window(t_data *data);
 int		cntrl_free(int x, int y, t_data *data);
-int 	k_down(int keycode, t_data *data);
-void 	put_animation(int c, int flag, t_data *data);
+int		k_down(int keycode, t_data *data);
+void	put_animation(int c, int flag, t_data *data);
 int		move_x(t_data *data);
-int 	move(t_data *data);
-void 	enemy_move(t_data *d);
+int		move(t_data *data);
+void	enemy_move(t_data *d);
 void	print_exit(int i);
 void	cntrl_extansion(char *s);
 t_loc	*find_c(t_data *data, char s, int nbr);
@@ -132,6 +137,6 @@ void	load_frame2(t_data *data);
 int		cntrl_free(int x, int y, t_data *d);
 void	put_player2(int c, t_data *d);
 void	put_player1(int c, int flag, t_data *d);
-int 	k_down(int keycode, t_data *d);
-void	load_p_image(int c,t_data *data);
+int		k_down(int keycode, t_data *d);
+void	load_p_image(int c, t_data *data);
 #endif

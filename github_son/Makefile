@@ -1,6 +1,6 @@
 NAME = so_long
 SFLAGS = -Lmlx -lmlx -framework OpenGL -framework Appkit
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -Wextra -g
 MLX = ./mlx/libmlx.a
 LIBFT = Libft/libft.a
 PRINTF_SRCS = ./printf/*.c

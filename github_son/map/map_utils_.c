@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:06:51 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/21 22:15:49 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:50:32 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ void	cntrl_extansion(char *s)
 	i = 0;
 	tmp = ft_strchr(s, '.');
 	if (!tmp)
-		exit(0);
-	if (!(*(tmp + 1) == 'b' && *(tmp + 2) == 'e' && *(tmp + 3) == 'r'))
 		print_exit(3);
+	if ((*(tmp + 1) == 'b' && *(tmp + 2) == 'e' && *(tmp + 3) == 'r'))
+		return ;
+	print_exit(3);
 }
 
 t_loc	*find_c(t_data *data, char s, int nbr)

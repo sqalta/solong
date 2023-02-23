@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/22 17:33:54 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:41:35 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	cntrl_map(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->lineMap[i] != '1')
+	if (data->line_map[i] != '1')
 		print_exit(1);
-	while (data->lineMap[i])
+	while (data->line_map[i])
 	{
-		if (data->lineMap[i] == '\n')
-			if (data->lineMap[i + 1] == '\n' || !data->lineMap[i + 1])
+		if (data->line_map[i] == '\n')
+			if (data->line_map[i + 1] == '\n' || !data->line_map[i + 1])
 				print_exit(1);
 		i++;
 	}
@@ -55,6 +55,8 @@ void	cntrl_map(t_data *data)
 
 void	cntrl_components(t_data *data, int i)
 {
+	int	k;
+
 	if (i)
 	{
 		if (data->exit != 1)
@@ -68,11 +70,11 @@ void	cntrl_components(t_data *data, int i)
 	{
 		if (!val_map_cntrl(data))
 			print_exit(2);
-		int i = -1;
-		while (data->d_map[++i])
-			free(data->d_map[i]);
-		data->d_map = ft_split(data->lineMap, '\n');
-		free(data->lineMap); //leaks ,!!!
+		k = -1;
+		while (data->d_map[++k])
+			free(data->d_map[k]);
+		free(data->d_map);
+		data->d_map = ft_split(data->line_map, '\n');
 		data->c_loc = find_c(data, 'C', data->collectible);
 		data->cpy_collectible = data->collectible;
 		data->e_loc = find_c(data, 'K', data->enemy);
@@ -95,12 +97,12 @@ void	r_map(char *pathMap, t_data *data)
 		rd = read(fd, buff, 2);
 		if (rd == -1)
 		{
-			free(data->lineMap);
+			free(data->line_map);
 			free(buff);
 			print_exit(1);
 		}
 		*(buff + rd) = '\0';
-		data->lineMap = ft_strjoin_gnl(data->lineMap, buff);
+		data->line_map = ft_strjoin_gnl(data->line_map, buff);
 	}
 	free(buff);
 }
@@ -109,9 +111,9 @@ void	get_map(char *pathMap, t_data *data)
 {
 	cntrl_extansion(pathMap);
 	r_map(pathMap, data);
-	if (!*data->lineMap)
+	if (!*data->line_map)
 		print_exit(1);
-	data->d_map = ft_split(data->lineMap, '\n');
+	data->d_map = ft_split(data->line_map, '\n');
 	cntrl_map(data);
 	cntrl_components(data, 1);
 	valid_path(data, data->d_p.y, data->d_p.x);

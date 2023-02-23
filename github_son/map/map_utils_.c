@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 18:06:51 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 17:50:32 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 18:56:01 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	print_exit(int i)
 		ft_printf("%s", "Hatalı Dosya Uzantisi");
 	else if (i == 4)
 		ft_printf("%s", "Yakalandıns");
+	else if (i == 5)
+		ft_printf("%s", "Düşman Locasyon Hatası");
 	else
 	{
 		ft_printf("%s%d\n", "Step->", ++i);

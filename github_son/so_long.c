@@ -6,19 +6,11 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:58:11 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 17:18:52 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:12:43 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	size_map(t_data *data)
-{
-	data->d_mlx->img_len = L;
-	data->d_mlx->img_hei = H;
-	data->d_mlx->w_len = data->lenght * L;
-	data->d_mlx->w_hei = data->height * H;
-}
 
 void	put_components(t_data *data, char s, int x, int y)
 {
@@ -62,9 +54,17 @@ void	put_background(t_data *data)
 	}
 }
 
+int	button_exit(void)
+{
+	exit(0);
+}
+
 void	create_window(t_data *data)
 {
-	size_map(data);
+	data->d_mlx->img_len = L;
+	data->d_mlx->img_hei = H;
+	data->d_mlx->w_len = data->lenght * L;
+	data->d_mlx->w_hei = data->height * H;
 	data->d_mlx->mlx = mlx_init();
 	data->d_mlx->win = mlx_new_window(data->d_mlx->mlx, data
 			->d_mlx->w_len, data->d_mlx->w_hei, "yamyam");
@@ -73,6 +73,7 @@ void	create_window(t_data *data)
 	load_frame2(data);
 	put_background(data);
 	mlx_hook(data->d_mlx->win, 2, 1L << 0, k_down, data);
+	mlx_hook(data->d_mlx->win, 17, 1L << 0, &button_exit, data);
 	mlx_loop_hook(data->d_mlx->mlx, move, data);
 	mlx_loop(data->d_mlx->mlx);
 }

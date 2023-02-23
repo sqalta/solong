@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:27:43 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 16:55:36 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:08:05 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	put_player1(int c, int flag, t_data *d)
 
 int	k_down2(int keycode, t_data *d)
 {
+	if (keycode == 12)
+		exit(0);
 	if (keycode == A)
 	{
 		if (cntrl_free(d->d_p.y, d->d_p.x - 1, d))

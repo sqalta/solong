@@ -31,6 +31,11 @@
 # define I_EF6 "image/c_frame6.xpm"
 # define I_EF7 "image/c_frame7.xpm"
 # define I_EF8 "image/c_frame8.xpm"
+# define I_PR "image/right_p.xpm"
+# define I_PL "image/left_p.xpm"
+# define I_PB "image/back_p.xpm"
+# define I_PF "image/front_p.xpm"
+
 
 
 
@@ -128,4 +133,5 @@ int		cntrl_free(int x, int y, t_data *d);
 void	put_player2(int c, t_data *d);
 void	put_player1(int c, int flag, t_data *d);
 int 	k_down(int keycode, t_data *d);
+void	load_p_image(int c,t_data *data);
 #endif

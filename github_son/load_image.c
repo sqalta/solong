@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:10:48 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/22 19:46:24 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 15:37:05 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	load_image(t_data *data)
 {
-	data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_P, 
+	data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_PF, 
 		&data->d_mlx->img_len, &data->d_mlx->img_hei);
 	data->d_mlx->e_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_E, 
 		&data->d_mlx->img_len, &data->d_mlx->img_hei);
@@ -67,3 +67,26 @@ void	load_frame2(t_data *data)
 	data->d_mlx->c_frm[7] = mlx_xpm_file_to_image(data->d_mlx->mlx, I_EF8, &data->d_mlx->img_len, &data->d_mlx->img_hei);
 }
 
+void	load_p_image(int c,t_data *data)
+{
+	if (c == 1)
+	{
+		data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_PB, 
+			&data->d_mlx->img_len, &data->d_mlx->img_hei);
+	}
+	else if (c == 2)
+	{
+		data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_PF, 
+			&data->d_mlx->img_len, &data->d_mlx->img_hei);
+	}
+	else if (c == 3)
+	{
+		data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_PL, 
+			&data->d_mlx->img_len, &data->d_mlx->img_hei);	
+	}
+	else
+	{
+		data->d_mlx->p_img = mlx_xpm_file_to_image(data->d_mlx->mlx, I_PR, 
+			&data->d_mlx->img_len, &data->d_mlx->img_hei);	
+	}
+}

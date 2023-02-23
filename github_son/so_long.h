@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:40:29 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 17:41:49 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:19:22 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,5 @@ void	put_player2(int c, t_data *d);
 void	put_player1(int c, int flag, t_data *d);
 int		k_down(int keycode, t_data *d);
 void	load_p_image(int c, t_data *data);
+void	put_string(t_data *d, int i);
 #endif

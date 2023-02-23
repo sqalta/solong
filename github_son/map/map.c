@@ -6,7 +6,7 @@
 /*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:40:45 by spalta            #+#    #+#             */
-/*   Updated: 2023/02/23 18:58:05 by spalta           ###   ########.fr       */
+/*   Updated: 2023/02/23 19:23:49 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	get_map(char *pathMap, t_data *data)
 	cntrl_components(data, 1);
 	valid_path(data, data->d_p.y, data->d_p.x);
 	cntrl_components(data, 0);
-	if (data->d_map[data->e_loc[0].y][data->e_loc[0].x + 1] == 'E')
+	if (data->d_map[data->e_loc[0].y][data->e_loc[0].x + 1] == 'E' ||
+		data->d_map[data->e_loc[0].y][data->e_loc[0].x + 1] == '1')
 		print_exit(5);
 }
